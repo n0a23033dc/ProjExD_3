@@ -222,6 +222,7 @@ def main():
                 beams.append(Beam(bird))  # スペースキー押下でBeamインスタンス生成，リストにappend
         screen.blit(bg_img, [0, 0])
         
+        #ゲームオーバー表示
         for bomb in bombs:
             if bird.rct.colliderect(bomb.rct):
                 bird.change_img(8, screen)
@@ -231,6 +232,15 @@ def main():
                 pg.display.update()
                 time.sleep(1)
                 return
+
+        #ゲームクリア表示
+        if score.score == NUM_OF_BOMBS:
+            fonto = pg.font.Font(None, 80)
+            txt = fonto.render("GAME CLEAR", True, (0, 0, 255))
+            screen.blit(txt, [WIDTH//2-150, HEIGHT//2])
+            pg.display.update()
+            time.sleep(1)
+            return            
 
         for i, bomb in enumerate(bombs):
             for beam in beams:
