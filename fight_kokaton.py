@@ -5,7 +5,7 @@ import time
 import pygame as pg
 import math
 
-
+# 定数
 WIDTH = 1100  # ゲームウィンドウの幅
 HEIGHT = 650  # ゲームウィンドウの高さ
 NUM_OF_BOMBS = 5  # 爆弾の個数
@@ -264,6 +264,7 @@ def main():
         for beam in beams:
             beam.update(screen)
         
+        # 爆発エフェクトの更新
         explosions = [explosion for explosion in explosions if explosion.update(screen)]  # 爆発エフェクトの更新
         
         score.update(screen)
